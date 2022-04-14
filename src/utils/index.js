@@ -1,0 +1,1 @@
+export { sortByCompany } from "./sortByCompany";
