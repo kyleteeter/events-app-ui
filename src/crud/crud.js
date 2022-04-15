@@ -3,7 +3,6 @@ const endpoint = "https://rf-json-server.herokuapp.com/events-5/";
 const headers = { "Content-Type": "application/json" };
 
 export function getEvents(setEvents) {
-  console.log("called");
   fetch(endpoint, { headers })
     .then((res) => {
       if (!res.ok) {

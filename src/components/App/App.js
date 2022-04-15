@@ -14,7 +14,6 @@ export function App() {
   }, [triggerRefresh]);
 
   const handleRefresh = () => {
-    console.log("fired");
     if (triggerRefresh) {
       setTriggerRefresh(false);
     } else {
