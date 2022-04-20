@@ -2,16 +2,11 @@ import { DisplayEventModal, UpdateEventModal } from "../Modals";
 import { deleteEvent } from "../../crud";
 import { CardContent, CardImage, Event, Flex, Icon } from "../../styles";
 import { trashIcon } from "../../assets/";
+import { useState } from "react";
 
-export function DisplayEvents({ event, handleRefresh }) {
+export function DisplayEvents({ event, handleRefresh, deleteHandler }) {
+
   const excerpt = event.description.substring(0, 110);
-
-  function deleteHandler(e) {
-    e.preventDefault();
-    if (window.confirm("Are you sure you wish to delete this item?")) {
-      deleteEvent(e, handleRefresh);
-    }
-  }
 
   return (
     <Event>

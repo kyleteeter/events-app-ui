@@ -17,13 +17,12 @@ export function getEvents(setEvents) {
     });
 }
 
-export function deleteEvent(e, handleRefresh) {
-  const id = e.target.getAttribute("id");
+export function deleteEvent(id) {
+  // const id = e.target.getAttribute("id");
   fetch(endpoint + id, {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
   })
-    .then((resp) => handleRefresh(resp))
     .catch((error) => {
       console.log(error);
     });
