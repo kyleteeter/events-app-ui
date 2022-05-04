@@ -1,1 +1,0 @@
-export { NewEventForm } from "./NewEventForm";

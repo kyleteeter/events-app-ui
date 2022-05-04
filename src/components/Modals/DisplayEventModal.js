@@ -1,74 +1,13 @@
 import { useState } from "react";
 import Modal from "react-modal";
-import { SecondaryButton, PrimaryButton, FlexSpaceBetween } from "../../styles";
-import { Close } from "../../styles/styles";
-import { NewEventForm } from "../NewEventForm/";
-import { UpdateEventForm } from "../UpdateEventForm/";
+import { SecondaryButton, FlexSpaceBetween } from "../../shared/";
+import { Close } from "../../shared/styles";
 
-Modal.setAppElement("#root");
-
-export function NewEventModal({ handleRefresh }) {
-  const [modalIsOpen, setIsOpen] = useState(false);
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function closeModal() {
-    handleRefresh();
-    setIsOpen(false);
-  }
-
-  return (
-    <div>
-      <SecondaryButton onClick={openModal}>Add a New Event</SecondaryButton>
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        contentLabel='Add a New Event Form'
-      >
-        <FlexSpaceBetween>
-          <h2>Add a New Event</h2>
-          <Close onClick={closeModal}>X</Close>
-        </FlexSpaceBetween>
-        <NewEventForm />
-      </Modal>
-    </div>
-  );
-}
-
-export function UpdateEventModal({ event, handleRefresh }) {
-  const [modalIsOpen, setIsOpen] = useState(false);
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function closeModal() {
-    handleRefresh();
-    setIsOpen(false);
-  }
-
-  return (
-    <div>
-      <PrimaryButton onClick={openModal}>Update Event Info</PrimaryButton>
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        contentLabel='Update Event Info Form'
-      >
-        <FlexSpaceBetween>
-          <h2>Update {event.name}</h2>
-          <Close onClick={closeModal}>X</Close>
-        </FlexSpaceBetween>
-        <UpdateEventForm event={event} />
-      </Modal>
-    </div>
-  );
-}
 
 export function DisplayEventModal({ event }) {
   const [modalIsOpen, setIsOpen] = useState(false);
+
+  Modal.setAppElement("#root");
 
   function openModal() {
     setIsOpen(true);

@@ -1,36 +1,30 @@
 import { useEffect, useState } from "react";
-import { NewEventModal } from "../Modals";
-import { DisplayEvents } from "../DisplayEvents";
-import { FlexCenter, FlexSpaceBetween, Title } from "../../styles";
-import "../../styles/global-styles.css";
+import { NewEventModal } from "../";
+import { FlexCenter, FlexSpaceBetween, Title } from "../../shared/";
 import { getEvents } from "../../crud";
+import { DisplayEvent } from "../";
 
 export function App() {
   const [events, setEvents] = useState([]);
-  const [triggerRefresh, setTriggerRefresh] = useState(false);
 
   useEffect(() => {
     getEvents(setEvents);
-  }, [triggerRefresh]);
+  }, []);
 
-  const handleRefresh = () => {
-    if (triggerRefresh) {
-      setTriggerRefresh(false);
-    } else {
-      setTriggerRefresh(true);
-    }
+  const refresh = () => {
+    getEvents(setEvents);
   };
 
   return (
     <div className='App'>
       <FlexSpaceBetween>
-        <Title>RainFocus Events App</Title>
-        <NewEventModal handleRefresh={handleRefresh} />
+        <Title>Events App</Title>
+        <NewEventModal refresh={refresh} />
       </FlexSpaceBetween>
       <FlexCenter>
         {Object.values(events).map((event) => (
           <div key={event.id}>
-            <DisplayEvents event={event} handleRefresh={handleRefresh} />
+            <DisplayEvent event={event} refresh={refresh} />
           </div>
         ))}
       </FlexCenter>

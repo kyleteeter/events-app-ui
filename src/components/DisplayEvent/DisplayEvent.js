@@ -1,15 +1,15 @@
-import { DisplayEventModal, UpdateEventModal } from "../Modals";
+import { DisplayEventModal, UpdateEventModal } from "..";
 import { deleteEvent } from "../../crud";
-import { CardContent, CardImage, Event, Flex, Icon } from "../../styles";
-import { trashIcon } from "../../assets/";
+import { CardContent, CardImage, Event, Flex, Icon } from "../../shared/";
+import { trashIcon } from "../../assets";
 
-export function DisplayEvents({ event, handleRefresh }) {
+export function DisplayEvent({ event, refresh }) {
   const excerpt = event.description.substring(0, 110);
 
   function deleteHandler(e) {
     e.preventDefault();
     if (window.confirm("Are you sure you wish to delete this item?")) {
-      deleteEvent(e, handleRefresh);
+      deleteEvent(e, refresh);
     }
   }
 
@@ -34,7 +34,7 @@ export function DisplayEvents({ event, handleRefresh }) {
       </CardContent>
       <Flex>
         <DisplayEventModal event={event} />
-        <UpdateEventModal event={event} handleRefresh={handleRefresh} />
+        <UpdateEventModal event={event} refresh={refresh} />
       </Flex>
     </Event>
   );

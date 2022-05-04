@@ -7,7 +7,7 @@ import {
   TextArea,
   Success,
   FlexDesktop,
-} from "../../styles";
+} from "../../shared/";
 
 export function UpdateEventForm({ event }) {
   const [updatedEvent, setUpdatedEvent] = useState({
